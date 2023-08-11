@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+{% block encabezado %}
+    {% include "encabezado.html" %}
+{%endblock %}
+{% block menu %}
+    {% include "administrador/menu.html" %}
+{%endblock %}
+{% block contenido %}
+
+
+<h3 class="text-center mt-3 fw-bold">MODULO ADMINISTRADOR</h3>
+  <div class="d-flex justify-content-center">
+    <div class="row" style="margin: 0 auto !important; width:80%">
+      <div class="col-sm">
+        <a href="/vistaGestionarCitasVeterinarias/">
+          <div class="text-center icon">
+            <img src="../media/fotos/agendaCitaVet.png" style="width: 200px;" class="text-center icon circular--square">
+            <i class="bi bi-person-fill-gear" style="font-size: 8rem;"></i>
+          </div>
+          <br>
+        </a>
+        <div class="text-center fw-bold">GESTIONAR CITAS VETERINARIAS</div>
+      </div>
+      <div class="col-sm">
+        <a href="/vistaGestionarCitasSpa/">
+          <div class="text-center icon">
+            <img src="../media/fotos/pelu.jpg" style="width: 200px;" class="text-center icon circular--square">
+            <i class="bi bi-person-fill-gear" style="font-size: 8rem;"></i>
+          </div>
+          <br>
+        </a>
+        <div class="text-center fw-bold">GESTIONAR CITAS BIENESTAR</div>
+      </div>
+      <div class="col-sm">
+        <a href="/vistaGestionarCitasAgendadas/">
+          <div class="text-center icon">
+            <img src="../media/fotos/cliente.png" style="width: 180px;" class="text-center icon circular--square">
+            <i class="bi bi-person-fill-gear" style="font-size: 8rem;"></i>
+          </div>
+          <br>
+        </a>
+        <div class="text-center fw-bold">GESTIONAR CITAS AGENDADAS</div>
+      </div>
+    </div>
+  </div>
+
+  {%endblock %}
+  {% block piePagina %}
+      {% include "piePagina.html" %}
+  {%endblock %}
+  

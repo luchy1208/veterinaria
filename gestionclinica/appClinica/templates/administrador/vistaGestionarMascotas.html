@@ -1,0 +1,55 @@
+{% extends "index.html" %}
+{% block encabezado %}
+    {% include "encabezado.html" %}
+{%endblock %}
+{% block menu %}
+    {% include "administrador/menu.html" %}
+{%endblock %}
+{% block contenido %}
+<br>
+<h3 class="text-center fw-bold">LISTA  DE MASCOTAS REGISTRADAS</h3> 
+    
+<div class="w-75 table-responsive" style="margin: 0 auto">
+    <a href="/vistaRegistrarMascota/"><button class="btn btn-success">Agregar</button></a>
+    <br>
+    <table id="tblMascotas" class="table table-bordered">
+        <thead>
+            <tr class="text-center bg-secondary text-white">
+                <th>Id</th>
+                <th>Nombre Mascota</th>
+                <th>Especie</th>
+                <th>Raza</th>
+                <th>Color</th>
+                <th>Sexo</th>
+                <th>Fecha Nacimiento</th>
+                <th>Foto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mascota in mascotas %}
+                <tr>
+                    <td>{{mascota.id}}</td>
+                    <td>{{mascota.masNombre}}</td>
+                    <td>{{mascota.masEspecie}}</td>
+                    <td>{{mascota.masRaza}}<td>
+                    <td>{{mascota.masColor}}</td>
+                    <td>{{mascota.masSexo}}</td>
+                    <td>{{mascota.masFechaNacimiento}}</td>
+                    <td><img src="../static/{{mascota.userFoto}}" width="50" height="50"></td>
+                    <td class="text-center">
+                        <i class="fa fa-edit text-body" tile="ver/editar"></i>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+    <!-- The Modal -->
+<script>
+    cargarDataTable($("#tblMascotas"),"Mascotas Registradas",3)
+</script>
+{%endblock %}
+{% block piePagina %}
+    {% include "piePagina.html" %}
+{%endblock %}

@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% block encabezado %}
+    {% include "encabezado.html" %}
+{%endblock %}
+{% block menu %}
+    {% include "administrador/menu.html" %}
+{%endblock %}
+{% block contenido %}
+<br>
+<br>
+<br>
+<h3 class="text-center fw-bold">GESTIONAR SERVICIOS</h3>
+<div class="w-75 table-responsive" style="margin: 0 auto; margin-bottom: 5rem;">
+    href="/vistaRegistrarServicio/"><button class="btn btn-secondary">Agregar</button></a>
+    <br>
+    <br>-->
+	<table id="tblServicios" class="table table-bordered table-striped">
+		<thead class="bg-dark text-white fw-bold">
+			<tr class="text-center colorcli text-white">
+				<th>Nombre </th>
+				<th>Tipo del Servicio</th>
+				<th>Fecha y Hora actuaizacion</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for servicio in listaServicios %}
+				<tr>
+					<td >{{servicio.serNombre}}</td>
+					<td> {{servicio.serTipo}}</td>
+					<td> {{servicio.fechaHoraActualizacion}}</td>
+					<td class="text-center">
+						<i class="fa fa-edit text-body" tile="ver/editar" style="font-size: 3rem;"></i>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{%endif %}  
+{%endblock %}
+{% block piePagina %}
+    {% include "piePagina.html" %}
+{%endblock %}

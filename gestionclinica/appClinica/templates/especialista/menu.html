@@ -1,0 +1,101 @@
+<nav class="navbar navbar-expand-lg navbar-dark colorcli" style="background-color: black;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/inicioEspecialista/">
+        {% if user.userFoto != "" %}
+        <img src="../media/{{user.userFoto}}" alt="Foto Usuario" style="width:40px;" class="rounded-pill"> 
+        {% else %}  
+        <img src="../media/iconoVeterinaria.png" alt="No foto" style="width:40px;" class="rounded-pill">
+        {% endif %}
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown" style="margin-right: 20px; margin-top:0.2rem;">          
+            <select id="cbRolMenu" name="cbRolMenu" class="form-control custom-select colorClinic" style="border:none; color:rgb(30, 102, 78);cursor: pointer;">
+                  {% if rol == 'Administrador' %}                 
+                    <option value="Especialista" class="bg-success">Especialista</option>
+                    <option value="Administrador"class="bg-success">Administrador</option>
+                  {%else %}
+                    <option value="{{rol}}"class="bg-success">{{rol}}</option>
+                  {% endif %}
+            </select>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/inicioEspecialista/">Inicio</a>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Gestion Citas</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/vistaGestionarCitasAgendadas/">Ver Citas Agendadas</a></li>
+              <li><a class="dropdown-item" href="/vistaGestionarCitasVeterinarias/">Gestionar Cita Veterinaria</a></li>     
+              <li><a class="dropdown-item" href="/vistaRegistrarCitaVeterinaria/">Registrar Cita Veterinaria</a></li>         
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/vistaSolicitudes/">Reportes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/salir/">Salir</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav> 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!--<div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="../static/imagenes/user_avatar.png" alt="Foto Usuario" style="width:40px;" class="rounded-pill"> 
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown" style="margin-right: 20px; margin-top:5px">          
+          <select id="cbRolMenu" name="cbRolMenu" class="form-control custom-select">
+            {% for rol in roles %}
+              {% if rol == "Administrador" %}                 
+                <option value="Administrador">Administrador</option>
+                <option value="Veterinario">Veterinario</option>
+                <option value="Auxiliar" selected>Auxiliar</option>
+              {%elif rol == "Veterinario" %}
+                <option value="Veterinario">Veterinario</option>
+              {%elif rol == "Auxiliar" %}
+                <option value="Auxiliar">Auxiliar</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </li>
+       
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Gestionar Materiales</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/vistaRegistrarMaterial/">Registrar Material</a></li>
+            <li><a class="dropdown-item" href="/vistaEntradaMaterial/">Entrada de Materiales</a></li>            
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/vistaLogin/">Gestionar Solicitudes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/salir/">Salir</a>
+        </li>
+       
+            
+      </ul>
+    </div>
+  </div>-->

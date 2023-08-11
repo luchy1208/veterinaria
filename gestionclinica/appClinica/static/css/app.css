@@ -1,0 +1,80 @@
+.colorcli{
+    background-color: rgb(10, 10, 10);
+}
+a{
+    color: rgb(70, 69, 69);
+}
+.icon:hover{
+    color: rgb(59, 130, 196);
+    cursor: pointer;
+}
+@media only screen and (min-width: 500px) {
+    .detalleElementos {
+        display: grid;
+        grid-template-columns: 30% 30%;
+        padding-bottom: 10vh;
+    }
+}
+.button-excel{
+    background-color: green;
+}
+.buttons-pdf{
+    background-color: red;
+}
+
+#cbRolMenu:focus{
+    background-color:rgb(238, 241, 243);
+    box-shadow: none;
+}
+
+@media only screen and (min-width: 800px) {
+    .detalleElementos {
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 10vh;
+    }
+}
+
+.circular--square {
+    border-top-left-radius: 50% 50%;
+    border-top-right-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    border-bottom-left-radius: 50% 50%;
+}
+
+.body {
+    background-color: rgb(34, 144, 172);
+    margin: auto;
+    font-family: Arial, sans-serif;
+    background-image: url('../img/bannerPrincipal.jpg');
+    background-size: cover;/*ajusta el tamaño del banner al espacio*/
+    background-position: center;
+    object-fit: contain;
+    height: 80vh;
+}
+
+
+.redes-sociales a {
+    display: inline-block;
+    margin: 5px;
+    font-size: 24px;
+    color: #575656; /* Color de los iconos */
+    transition: color 0.3s; /* Transición de color al pasar el ratón por encima */
+    
+  }
+  
+  .redes-sociales a:hover {
+    color: #007bff; /* Color al pasar el ratón por encima */
+  }
+  .color-box {
+    background-color: #f8fafa; /* Aquí defines el color en formato hexadecimal */
+  }
+  
+ 
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 6px 3px 6px;
+}

@@ -1,0 +1,60 @@
+{% extends "index.html" %} 
+{% block encabezado %} 
+    {% include "encabezado.html"%}
+{%endblock %} 
+{% block menu %} 
+    {% include "tecnico/menu.html" %} 
+{%endblock%} 
+{% block contenido %}
+
+<h3 class="text-center mt-3 fw-bold">MÓDULO ATENCION BIENESTAR</h3>
+<div class="d-flex justify-content-center">
+  <div class="row" style="margin: 0 auto !important; width: 65%">
+    <div class="col-sm">
+      <a href="/vistaGestionarCitaVeterinaria/">
+        <div class="text-center icon">
+          <img
+            src="../media/fotos/agendaSpa.png"
+            style="width: 180px"
+            class="text-center icon circular--square"
+          />
+          <i class="bi bi-person-fill-gear" style="font-size: 8rem"></i>
+        </div>
+        <br />
+      </a>
+      <div class="text-center fw-bold">AGENDA CITAS BIENESTAR</div>
+    </div>
+    <div class="col-sm">
+      <a href="/vistaGestionarCitasVeterinarias/">
+        <div class="text-center icon">
+          <img
+            src="../media/fotos/iconoSpa.jpg"
+            style="width: 200px"
+            class="text-center icon circular--square"
+          />
+          <i class="bi bi-person-fill-gear" style="font-size: 8rem"></i>
+        </div>
+        <br />
+      </a>
+      <div class="text-center fw-bold">GESTIONAR CITAS BIENESTAR</div>
+    </div>
+    <div class="col-sm">
+      <a href="/vistaGestionarCitasVeterinarias/">
+        <div class="text-center icon">
+          <img
+            src="../media/fotos/inforeSpa.png"
+            style="width: 220px"
+            class="text-center icon circular--square"
+          />
+          <i class="bi bi-person-fill-gear" style="font-size: 8rem"></i>
+        </div>
+        <br />
+      </a>
+      <div class="text-center fw-bold">REPORTE</div>
+    </div>
+  </div>
+</div>
+{%endblock %} 
+{% block piePagina %} 
+    {% include "piePagina.html" %} 
+{%endblock %}

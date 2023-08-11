@@ -1,0 +1,150 @@
+{% extends "index.html" %}
+{% block encabezado %}
+    {% include "encabezado.html" %}
+{%endblock %}
+{% block menu %}
+    {% include "especialista/menu.html" %}
+{%endblock %}
+{% block contenido %}
+    <br>
+    <div class="d-flex justify-content-center align-items-center" style="margin-bottom: 7rem;">
+        <form id="frmRegistrarCitaVeterinaria" action="/registrarCitaVeterinaria/" method="post" enctype="multipart/form-data" class="needs-validation w-75" novalidate>                   
+            {% csrf_token%}
+            <h3 class="text-center fw-bold">REGISTRAR CITA VETERINARIA</h3>
+            <br>
+            <div class="form-group row">
+                <div class="mb-3 col-lg-4">
+                    <label for="txtCodigo" class="fw-bold">Codigo Cita:</label>
+                    <input type="number" name="txtCodigo" value="1" id="txtCodigo" class="form-control" required>
+                </div>
+                <div class="mb-3 col-lg-4">
+                    <label for="txtAcompanante" class="fw-bold">Nombre Acompañante:</label>
+                    <input type="text" name="txtAcompanante" class="form-control" id="txtAcompanante" placeholder="Nombre Acompañante" required>
+                </div>
+                <div class="mb-3 col-lg-4">
+                    <label for="txtNombre" class="fw-bold">Nombre Mascota:</label>
+                    <input type="text" name="txtNombre" class="form-control" id="txtNombre" placeholder="Nombre Mascota" required>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <label for="cbEspecie" class="fw-bold">Especie:</label>
+                    <select name="cbEspecie" id="cbEspecie" class="form-select">
+                        <option value="Seleccione">Seleccione</option>
+                        <option value="Canino">Canino</option>
+                        <option value="Felino">Felino</option>
+                        <option value="Reptil">Reptil</option>
+                        <option value="Roedor">Roedor</option>
+                        <option value="Ave">Ave</option>
+                        <option value="Pez">Pez</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+                <div class="mb-3 col-lg-4">
+                    <label for="txtRaza" class="fw-bold">Raza</label>
+                    <input type="text" name="txtRaza" class="form-control" id="txtRaza" placeholder="Raza" required>
+                </div>
+                <div class="mb-3 col-lg-4">
+                    <label for="txtColor" class="fw-bold">Color Pelaje</label>
+                    <input type="text" name="txtColor" class="form-control" id="txtColor" placeholder="Color" required>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <label for="cbSexo" class="fw-bold">Sexo:</label>
+                    <select name="cbSexo" id="cbSexo" class="form-select">
+                        <option value="Hembra">Hembra</option>
+                        <option value="Macho">Macho</option>
+                    </select>
+                </div>
+                <div class="col-lg-6 mb-3">
+                    <label for="txtFecha" class="fw-bold">Fecha Nacimiento:</label>
+                    <input type="datetime-local" name="txtFecha" id="txtFecha" class="form-control" max="{{hoy}}" required> 
+                </div>
+                <div class="form-group row">                                             
+                    <div class="col-lg-12 mb-3">
+                        <label for="txtResultado" class="fw-bold">Escriba el Resultado: (*opcional)</label>
+                        <textarea name="txtResultado" id="txtResultado" cols="30" rows="5" class="form-control" ></textarea>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <label for="cbEstado" class="fw-bold">Estado:</label>
+                    <select name="cbEstado" id="cbEstado" class="form-select">
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Atendida">Atendida</option>
+                        <option value="Cancelada">Cancelada</option>
+                    </select>
+                </div>
+                <div class="mt-3 col-lg-4">
+                    <label for="txtPrecio" class="fw-bold">Precio Cita:</label>
+                    <input type="number" class="form-control" id="txtPrecio" name="txtPrecio" placeholder="Precio de la cita" step="0.01"required>
+                    <div class="invalid-feedback">Por favor ingrese el valor de la cita.</div>                     
+                </div>
+            </div>
+            <br>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-secondary">Registrar</button>
+                <a href="/vistaGestionarCitaVeterinaria/"><button type="button" class="btn btn-danger mx-2">Cancelar</button></a>
+            </div>
+        </form> 
+    </div>
+{% if mensaje %}  
+    {% if estado %}  
+        <script>
+            Swal.fire({
+                title: 'Registro Cita Veterinaria',
+                text: '{{mensaje}}',
+                icon: 'success',               
+                confirmButtonColor: '#3085d6',             
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.href="/vistaRegistrarCitaVeterinaria/"
+                }
+            });
+        </script>
+    {% else %}
+        <script>
+            Swal.fire({
+                title: 'Registro Cita Veterinaria',
+                text: '{{mensaje}}',
+                icon: 'warning',               
+                confirmButtonColor: '#3085d6',             
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('txtCodigo').value = parseInt("{{cita.citVetCodigo}}")
+                    document.getElementById('txtAcompanante').value = "{{cita.citVetAcompanante}}"
+                    /*document.getElementById('txtAcompanante').value = "{{mascota.masCodigo}}"*/
+                   
+                }
+            })
+        </script>
+    {% endif %}
+{% endif %}
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+          "use strict";
+    
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          const forms = document.querySelectorAll(".needs-validation");
+    
+          // Loop over them and prevent submission
+          Array.from(forms).forEach((form) => {
+            form.addEventListener(
+              "submit",
+              (event) => {
+                if (!form.checkValidity()) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+    
+                form.classList.add("was-validated");
+              },
+              false
+            );
+          });
+        })();
+    </script>
+{%endblock %}
+{% block piePagina %}
+    {% include "piePagina.html" %}
+{%endblock %}

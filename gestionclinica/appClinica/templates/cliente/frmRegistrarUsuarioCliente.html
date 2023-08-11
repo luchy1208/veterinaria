@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+{% block encabezado %}
+    {% include "encabezado.html" %}
+{%endblock %}
+{% block menu %}
+    {% include "cliente/menu.html" %}
+{%endblock %}
+{% block contenido %}
+    <br>
+    <div class="d-flex justify-content-center align-items-center" style="margin-bottom: 7rem;">
+        <form id="frmRegistrarUsuarioCliente" action="/registrarUsuarioCliente/" method="post" enctype="multipart/form-data" class="was-validated w-75">                   
+            {% csrf_token%}
+    
+        <h3 class="text-center fw-bold">REGISTRAR CLIENTE</h3>
+        <br>
+        <div class="mb-3 col-lg-4">
+            <label for="txtNombres" class="fw-bold">Nombres</label>
+            <input type="text" name="txtNombres" class="form-control" id="txtNombres" placeholder="Nombres" required> 
+        </div>
+        <div class="mb-3 col-lg-4">
+            <label for="txtApellidos" class="fw-bold">Apellidos</label>
+            <input type="text" name="txtApellidos" class="form-control" id="txtApellidos" placeholder="Apellidos" required> 
+        </div>
+        <!--
+        <div class="mb-3 col-lg-3"> 
+            <label for="txtTelefono" class="fw-bold">Telefono:</label>                                
+            <input type="number" step="any" name="txtTelefono" id="txtTelefono" class="form-control" required>        
+        </div> -->
+        
+        <div class="mb-3 col-lg-4">
+            <label for="txtCorreo" class="fw-bold">Correo Electrónico</label>
+            <input type="email" name="txtCorreo" class="form-control" id="txtCorreo" placeholder="correo Electrónico" required> 
+        </div>
+        <div class="form-group row">        
+            <div>
+                <button type="submit" class="btn btn-secondary">Registrar</button>
+                <a href="/vistaRegistrarUsuarioCliente/"><button type="button" class="btn btn-danger">Cancelar</button></a>
+            </div>
+        </form>
+    </div>
+    {%if mensaje %}
+    <script>
+        Swal.fire({
+            title: 'Registro de usuario',
+            text: '{{mensaje}}',
+            icon: 'warning',               
+            confirmButtonColor: '#3085d6',             
+            confirmButtonText: 'Aceptar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+            }
+        })
+    </script>
+    {%endif %}  
+    {%endblock %}
+    {% block piePagina %}
+        {% include "piePagina.html" %}
+    {%endblock %}

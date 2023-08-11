@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% block encabezado %}
+    {% include "encabezado.html" %}
+{%endblock %}
+{% block menu %}
+{%endblock %}
+{% block contenido %}
+<img src="../media/fotos/consultorio.png" alt="Workplace" usemap="#workmap">
+<map name="workmap">
+<area shape="default" coords="34,44,270,350" alt="serviciosBasicos" href="serviciosBasicos.htm">
+</map>
+{%endblock %}
+{% block piePagina %}
+{% include "piePagina.html" %}
+{%endblock %}

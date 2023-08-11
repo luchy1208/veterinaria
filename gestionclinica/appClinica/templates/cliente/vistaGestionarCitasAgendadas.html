@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+{% block encabezado %}
+    {% include "encabezado.html" %}
+{%endblock %}
+{% block menu %}
+    {% include "administrador/menu.html" %}
+{%endblock %}
+{% block contenido %}
+    <br>
+    <h3 class="text-center fw-bold">GESTIONAR AGENDA DE CITAS</h3>
+    
+    <div class="w-75 table-responsive" style="margin: 0 auto">
+        <a href="/vistaRegistrarCitaAgenda/"><button class="btn btn-success">Agregar</button></a>
+        <br>
+        <table id="tblPersonas" class="table table-bordered">
+            <thead>
+                <tr class="text-center bg-secondary text-white">
+                    <th>#</th>
+                    <th>Cliente</th>
+                    <th>Mascota</th>
+                    <th>Servicio</th>
+                    <th>Fecha</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cita in agendarCita %}
+                    <tr>
+                        <td>{{cita.id}}</td>
+                        <td>{{cita.ageCitMascota.masCliUsuario.first_name.sec}}</td>
+                        <td>{{cita.ageCitMascota.masNombre}}</td>
+                        <td>{{cita.ageCitTipServicios.serNombre}}</td>
+                        <td>{{cita.fechaHoraCreacion}}</td>
+                        <td class="text-center">
+                            <i class="fa fa-edit text-body" tile="ver/editar"></i>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- The Modal -->
+
+
+    <script>
+        cargarDataTable($("#tblPersonas"),"citas Registrados",3)
+    </script>
+    {%endblock %}
+    {% block piePagina %}
+        {% include "piePagina.html" %}
+    {%endblock %}
